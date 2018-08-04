@@ -1,0 +1,17 @@
+{
+  "name": "gbdd",
+  "version": "1.0.0",
+  "description": "generate BDD files (step, feature, pageobjects)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sqz777",
+  "license": "ISC",
+  "bin": {
+    "gbdd": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.17.0"
+  }
+}
