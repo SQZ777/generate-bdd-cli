@@ -1,4 +1,4 @@
-var fs = require('./fs')
+var fs = require('./fs');
 
 module.exports.generate = function (name) {
     if (name === undefined) {
@@ -7,6 +7,6 @@ module.exports.generate = function (name) {
     var folderPath = './' + name + '_feature/';
     fs.createFolder(folderPath);
     fileName = folderPath + name + '.feature';
-    var fileContent = 'Feature: ' + name + ' feature';
+    var fileContent = 'Feature: ' + name + ' feature\n';
     fs.writeFile(fileName, fileContent);
 }

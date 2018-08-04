@@ -1,4 +1,4 @@
-fs = require('fs')
+fs = require('fs');
 
 module.exports.writeFile = function (fileName, fileContent) {
 
