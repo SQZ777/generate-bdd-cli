@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+var stepDefinition = require('./step_definition');
 var feature = require('./feature');
 var program = require('commander');
 
@@ -8,9 +9,10 @@ program
 
 program
     .command('g [feature name]')
-    .description('generate ')
+    .description('generate files')
     .action(function (featureName) {
-        feature.generate(featureName)
+        feature.generate(featureName);
+        stepDefinition.generate(featureName);
     })
 
 program.parse(process.argv);
