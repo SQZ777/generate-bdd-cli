@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var Build = require('./bdd_build')
+var Build = require('./lib/bdd_build')
 
 program
     .option('F, --no-feature', 'will not create feature file')
