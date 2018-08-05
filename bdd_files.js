@@ -46,7 +46,7 @@ BddFiles.prototype.platformImplementsFileName = function platformImplementsFileN
 
 BddFiles.prototype.platformImplementsFileContent = function platformImplementsFileContent(platform) {
     var fileContent = 'require_relative "./{0}_{1}_elements.rb"\n'.format(platform, this.featureName);
-    var fileContent = "\nmodule {0}{1}Implements\nend".format(titleCase(platform),
+    fileContent += "\nmodule {0}{1}Implements\nend".format(titleCase(platform),
         snakeToCamel(titleCase(this.featureName)));
     return fileContent;
 }
