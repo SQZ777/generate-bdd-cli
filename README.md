@@ -1,6 +1,5 @@
-My BDD files generater
-===
-
+# generate-bdd-cli
+this cli is help to generate BDD files
 
 ##  Building
 
