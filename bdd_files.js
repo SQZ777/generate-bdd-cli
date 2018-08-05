@@ -3,12 +3,6 @@ function BddFiles(featureFolder, featureName) {
     this.featureFolder = featureFolder;
 }
 
-function titleCase(str) {
-    return str.toLowerCase().split(' ').map(function (val) {
-        return val.replace(val[0], val[0].toUpperCase());
-    }).join(' ');
-}
-
 BddFiles.prototype.featureFileName = function featureFileName() {
     var fileName = this.featureFolder + this.featureName + '.feature';
     return fileName;
@@ -37,7 +31,10 @@ BddFiles.prototype.pageFileName = function pageFileName() {
 
 BddFiles.prototype.pageFileContent = function pageFileContent() {
     var fileContent = 'require "selenium-cucumber"\n';
-    fileContent += 'require_relative "../page_objects/{0}_page.rb"\n'.format(this.featureName);
+    fileContent += 'require_relative "../page_objects/android/android_{0}_implements.rb"\n'.format(this.featureName);
+    fileContent += 'require_relative "../page_objects/ios/ios_{0}_implements.rb"\n'.format(this.featureName);
+    fileContent += 'require_relative "../page_objects/desktop/desktop_{0}_implements.rb"\n\n'.format(this.featureName);
+    fileContent += "class {0}Page\nend".format(snakeToCamel(titleCase(this.featureName)));
     return fileContent;
 }
 
@@ -64,6 +61,7 @@ BddFiles.prototype.platformElementsFileContent = function platformElementsFileCo
     return fileContent;
 }
 
+
 String.prototype.format = function () {
     var args = arguments;
     return this.replace(/\{(\d+)\}/g, function (m, n) {
@@ -83,6 +81,12 @@ function sentenlize(str) {
         strArray[i] = strArray[i].charAt(0).toUpperCase() + strArray[i].substr(1, strArray[i].length);
     }
     return strArray.join(' ');
+}
+
+function titleCase(str) {
+    return str.toLowerCase().split(' ').map(function (val) {
+        return val.replace(val[0], val[0].toUpperCase());
+    }).join(' ');
 }
 
 module.exports = BddFiles;
