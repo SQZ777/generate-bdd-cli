@@ -33,8 +33,8 @@ BddFiles.prototype.pageFileContent = function pageFileContent() {
     var fileContent = 'require "selenium-cucumber"\n';
     fileContent += 'require_relative "../page_objects/android/android_{0}_implements.rb"\n'.format(this.featureName);
     fileContent += 'require_relative "../page_objects/ios/ios_{0}_implements.rb"\n'.format(this.featureName);
-    fileContent += 'require_relative "../page_objects/desktop/desktop_{0}_implements.rb"\n\n'.format(this.featureName);
-    fileContent += "class {0}Page\nend".format(snakeToCamel(titleCase(this.featureName)));
+    fileContent += 'require_relative "../page_objects/desktop/desktop_{0}_implements.rb"\n'.format(this.featureName);
+    fileContent += "\nclass {0}Page\nend".format(snakeToCamel(titleCase(this.featureName)));
     return fileContent;
 }
 
@@ -46,6 +46,8 @@ BddFiles.prototype.platformImplementsFileName = function platformImplementsFileN
 
 BddFiles.prototype.platformImplementsFileContent = function platformImplementsFileContent(platform) {
     var fileContent = 'require_relative "./{0}_{1}_elements.rb"\n'.format(platform, this.featureName);
+    var fileContent = "\nmodule {0}{1}Implements\nend".format(titleCase(platform),
+        snakeToCamel(titleCase(this.featureName)));
     return fileContent;
 }
 
