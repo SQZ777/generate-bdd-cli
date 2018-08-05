@@ -13,6 +13,7 @@ program
     .action(function (featureName) {
         feature.generate(featureName);
         stepDefinition.generate(featureName);
+        pageObject.generate(featureName);
     })
 
 program.parse(process.argv);
